@@ -1,0 +1,75 @@
+site_name: Modelagem e Desenvolvimento de Banco de Dados
+site_description: Site de aulas e materiais didáticos da matéria "Modelagem e Desenvolvimento de Banco de Dados"
+site_author: Luccas Alencar
+
+# Repositório (substitua pelo seu)
+repo_name: LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+repo_url: https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+
+# Tema
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    # Modo claro
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    # Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - navigation.footer
+
+# Plugins
+plugins:
+  - search:
+      lang: pt
+
+# Extensões Markdown
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# Navegação
+nav:
+  - Home: index.md
+  - Aulas:
+    - Aula 1 - Introdução à modelagem de banco de dados : aulas/Aula 1 - Introdução à modelagem de banco de dados.md
+    - Aula 2 - Levantamento de requisitos e análise de dados : aulas/Aula 2 - Levantamento de requisitos e análise de dados.md
+    - Aula 3 - Modelo Entidade-Relacionamento (ER) : aulas/Aula 3 - Modelo Entidade-Relacionamento (ER).md
+    - Aula 4 - Ferramentras de modelagem de banco de dados : aulas/Aula 4 - Ferramentas de modelagem de banco de dados.md
+    - Aula 5 - Relacionamentos um-para-um : aulas/Aula 5 - Relacionamentos um-para-um.md
+
+
+
+extra:
+  generator: false
