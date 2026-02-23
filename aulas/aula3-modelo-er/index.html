@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Site de aulas e materiais didáticos da matéria "Modelagem e Desenvolvimento de Banco de Dados"">
+      
+      
+        <meta name="author" content="Luccas Alencar">
+      
+      
+      
+        <link rel="prev" href="../aula2-requisitos/">
+      
+      
+        <link rel="next" href="../aula4-ferramentas-modelagem/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Aula 3 - Modelo Entidade-Relacionamento (ER) - Modelagem e Desenvolvimento de Banco de Dados</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-3-modelo-entidade-relacionamento-er" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-header__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelagem e Desenvolvimento de Banco de Dados
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 3 - Modelo Entidade-Relacionamento (ER)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../aula1-introducao/" class="md-tabs__link">
+          
+  
+  
+  Aulas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-nav__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Modelagem e Desenvolvimento de Banco de Dados
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula1-introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 1 - Introdução à modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula2-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 2 - Levantamento de requisitos e análise de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 3 - Modelo Entidade-Relacionamento (ER)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 3 - Modelo Entidade-Relacionamento (ER)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 O que você vai aprender hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-planejar-antes-de-criar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Por que planejar antes de criar?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Entidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏷️ Atributo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chave-primaria-pk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Chave Primária (PK)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relacionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Relacionamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Relacionamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinalidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-er-resumo-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Diagrama ER — Resumo visual
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗺️ Diagrama ER — Resumo visual">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-completo-sistema-de-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo completo — Sistema de Biblioteca
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-faca-no-caderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade — Faça no caderno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desafio-extra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 Desafio extra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumindo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Resumindo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quer-saber-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Quer saber mais?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula4-ferramentas-modelagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 4 - Ferramentras de modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 O que você vai aprender hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-planejar-antes-de-criar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Por que planejar antes de criar?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 Entidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏷️ Atributo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chave-primaria-pk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Chave Primária (PK)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relacionamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Relacionamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Relacionamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinalidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-er-resumo-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Diagrama ER — Resumo visual
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗺️ Diagrama ER — Resumo visual">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-completo-sistema-de-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo completo — Sistema de Biblioteca
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-faca-no-caderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade — Faça no caderno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desafio-extra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 Desafio extra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumindo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Resumindo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quer-saber-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Quer saber mais?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="aula-3-modelo-entidade-relacionamento-er">Aula 3 — Modelo Entidade-Relacionamento (ER)</h1>
+<blockquote>
+<p><strong>Componente:</strong> Modelagem e Desenvolvimento de Banco de Dados<br />
+<strong>Unidade:</strong> Levantamento de Dados e Conceitos Fundamentais<br />
+<strong>Duração:</strong> ~50 minutos</p>
+</blockquote>
+<hr />
+<h2 id="o-que-voce-vai-aprender-hoje">🎯 O que você vai aprender hoje</h2>
+<p>Nas aulas anteriores você conheceu o que é um banco de dados, viu o Excel como exemplo de tabela e explorou os tipos de dados. Agora chegou a hora de aprender <strong>como planejar</strong> um banco de dados antes de criá-lo — e para isso existe o <strong>Modelo Entidade-Relacionamento (ER)</strong>.</p>
+<p>Ao final desta aula você vai saber:</p>
+<ul>
+<li>O que são <strong>entidades</strong>, <strong>atributos</strong> e <strong>relacionamentos</strong></li>
+<li>O que é uma <strong>chave primária</strong> e por que ela é essencial</li>
+<li>Como montar um <strong>Diagrama ER</strong> no caderno</li>
+</ul>
+<hr />
+<h2 id="por-que-planejar-antes-de-criar">📌 Por que planejar antes de criar?</h2>
+<p>Imagine que você vai construir uma casa. Você começa a comprar tijolos aleatoriamente, ou antes faz uma <strong>planta</strong>?</p>
+<p>Com bancos de dados é igual. Antes de criar as tabelas no computador, fazemos um <strong>rascunho visual</strong> chamado de <strong>Diagrama Entidade-Relacionamento (DER)</strong>. Ele serve para:</p>
+<ul>
+<li>Entender <strong>quais informações</strong> precisam ser guardadas</li>
+<li>Enxergar como essas informações <strong>se conectam</strong></li>
+<li>Evitar erros e retrabalho</li>
+</ul>
+<hr />
+<h2 id="entidade">🧱 Entidade</h2>
+<p>Uma <strong>entidade</strong> é qualquer coisa do mundo real sobre a qual queremos guardar informações.</p>
+<p><strong>Exemplos:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contexto</th>
+<th>Entidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Biblioteca</td>
+<td>Livro, Usuário, Empréstimo</td>
+</tr>
+<tr>
+<td>Escola</td>
+<td>Aluno, Professor, Disciplina</td>
+</tr>
+<tr>
+<td>Pet shop</td>
+<td>Animal, Tutor, Consulta</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Regra prática:</strong> se você consegue listar coisas daquele tipo (ex: vários livros, vários alunos), é uma entidade.</p>
+</blockquote>
+<p>No diagrama, entidades são representadas por <strong>retângulos</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  Livro  │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>└─────────┘
+</code></pre></div>
+<hr />
+<h2 id="atributo">🏷️ Atributo</h2>
+<p><strong>Atributos</strong> são as características que descrevem uma entidade — ou seja, as informações que queremos guardar sobre ela.</p>
+<p><strong>Exemplo — Entidade "Livro":</strong>
+- Título
+- Autor
+- ISBN
+- Ano de publicação</p>
+<blockquote>
+<p>📝 Pense assim: se a entidade fosse uma ficha de cadastro, os atributos seriam os campos dessa ficha.</p>
+</blockquote>
+<p>No diagrama, atributos são representados por <strong>elipses</strong> ligadas à entidade.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>      (Título)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>         |
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>┌─────────┐    (Autor)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  Livro  │───
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>└─────────┘    (ISBN)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>         |
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    (Ano_publicacao)
+</code></pre></div>
+<hr />
+<h2 id="chave-primaria-pk">🔑 Chave Primária (PK)</h2>
+<p>Dentro de uma entidade, precisamos de um atributo capaz de <strong>identificar cada registro de forma única</strong>. Esse atributo se chama <strong>chave primária</strong> (ou <em>Primary Key</em> — PK).</p>
+<p><strong>Características obrigatórias:</strong>
+- Deve ser <strong>única</strong> — dois registros não podem ter o mesmo valor
+- Deve ser <strong>não nula</strong> — não pode ficar em branco</p>
+<p><strong>Exemplos:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Entidade</th>
+<th>Chave primária</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Livro</td>
+<td>ISBN (todo livro tem um ISBN único no mundo)</td>
+</tr>
+<tr>
+<td>Aluno</td>
+<td>Número de matrícula</td>
+</tr>
+<tr>
+<td>Produto</td>
+<td>Código de barras</td>
+</tr>
+<tr>
+<td>Pessoa</td>
+<td>CPF</td>
+</tr>
+</tbody>
+</table>
+<p>No diagrama, a chave primária é indicada <strong>sublinhando</strong> o nome do atributo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>      (&lt;u&gt;ISBN&lt;/u&gt;)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>         |
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>┌─────────┐    (Título)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│  Livro  │───
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└─────────┘    (Autor)
+</code></pre></div>
+<hr />
+<h2 id="relacionamento">🔗 Relacionamento</h2>
+<p>Um <strong>relacionamento</strong> é a ligação entre duas entidades. Ele descreve como elas interagem.</p>
+<p><strong>Exemplo:</strong> Um <em>Usuário</em> <strong>realiza</strong> um <em>Empréstimo</em> de um <em>Livro</em>.</p>
+<p>No diagrama, relacionamentos são representados por <strong>losangos</strong> conectando as entidades.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────┐       ◇         ┌─────────┐
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│ Usuário │────&lt; realiza &gt;────│  Livro  │
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>└─────────┘                  └─────────┘
+</code></pre></div>
+<h3 id="cardinalidade">Cardinalidade</h3>
+<p>A cardinalidade define <strong>quantos</strong> de cada lado participam do relacionamento.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Significado</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 para 1</strong> (1:1)</td>
+<td>Um registro se relaciona com exatamente um outro</td>
+<td>Uma pessoa possui um CPF</td>
+</tr>
+<tr>
+<td><strong>1 para Muitos</strong> (1:N)</td>
+<td>Um registro se relaciona com vários do outro lado</td>
+<td>Um professor ministra várias disciplinas</td>
+</tr>
+<tr>
+<td><strong>Muitos para Muitos</strong> (N:M)</td>
+<td>Vários de um lado com vários do outro</td>
+<td>Alunos se matriculam em várias disciplinas, disciplinas têm vários alunos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="diagrama-er-resumo-visual">🗺️ Diagrama ER — Resumo visual</h2>
+<p>Os três componentes principais do diagrama:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>RETÂNGULO = Entidade        ELIPSE = Atributo        LOSANGO = Relacionamento
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>┌──────────┐               ( atributo )                  ◇
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│ Entidade │                                          relaciona
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>└──────────┘
+</code></pre></div>
+<h3 id="exemplo-completo-sistema-de-biblioteca">Exemplo completo — Sistema de Biblioteca</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>(nome)  (email)                           (título)  (&lt;u&gt;ISBN&lt;/u&gt;)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   \      /                                   \      /
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>┌──────────┐          ◇              ┌──────────┐
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│ Usuário  │──── &lt; realiza &gt; ────────│   Livro  │
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>└──────────┘          ◇              └──────────┘
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    &lt;u&gt;matrícula&lt;/u&gt;        |                   (autor)
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>                   ┌──────────┐
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>                   │Empréstimo│
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>                   └──────────┘
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                  (&lt;u&gt;id_emprestimo&lt;/u&gt;)
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>                  (data_inicio)
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>                  (data_devolucao)
+</code></pre></div>
+<blockquote>
+<p><strong>Leitura:</strong> Um usuário realiza um empréstimo. Um empréstimo envolve um livro.</p>
+</blockquote>
+<hr />
+<h2 id="atividade-faca-no-caderno">✏️ Atividade — Faça no caderno</h2>
+<p><strong>Contexto:</strong> Você foi contratado por uma biblioteca para ajudar a organizar o sistema de dados deles.</p>
+<p><strong>Tarefa:</strong> Monte um Diagrama ER no seu caderno seguindo os passos abaixo.</p>
+<p><strong>Passo 1 — Entidades</strong><br />
+Desenhe três retângulos com os nomes: <code>Livro</code>, <code>Usuário</code> e <code>Empréstimo</code>.</p>
+<p><strong>Passo 2 — Atributos</strong><br />
+Para cada entidade, acrescente pelo menos 3 atributos em elipses:
+- <strong>Livro:</strong> ISBN, título, autor (e mais um que você escolher)
+- <strong>Usuário:</strong> matrícula, nome, email (e mais um que você escolher)
+- <strong>Empréstimo:</strong> id_emprestimo, data_inicio, data_devolucao</p>
+<p><strong>Passo 3 — Chave primária</strong><br />
+Sublinhe o atributo que será a chave primária de cada entidade.</p>
+<p><strong>Passo 4 — Relacionamentos</strong><br />
+Conecte as entidades com losangos e dê um nome ao relacionamento (ex: "realiza", "inclui").</p>
+<p><strong>Passo 5 — Cardinalidade</strong><br />
+Pense e anote ao lado de cada relacionamento: é 1:1, 1:N ou N:M?<br />
+- Um usuário pode pegar vários livros emprestados?
+- Um livro pode ser emprestado para vários usuários ao mesmo tempo?</p>
+<hr />
+<h2 id="desafio-extra">🤔 Desafio extra</h2>
+<p>Pense em um sistema diferente — pode ser um <strong>pet shop</strong>, uma <strong>escola</strong>, uma <strong>loja de games</strong>, ou qualquer outro contexto que você goste.</p>
+<p>No caderno, crie um mini-diagrama ER com:
+- Pelo menos <strong>2 entidades</strong>
+- <strong>3 atributos</strong> por entidade (com chave primária sublinhada)
+- <strong>1 relacionamento</strong> entre elas com a cardinalidade indicada</p>
+<hr />
+<h2 id="resumindo">📝 Resumindo</h2>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th>O que é</th>
+<th>Como aparece no diagrama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entidade</strong></td>
+<td>Objeto do mundo real com informações a guardar</td>
+<td>Retângulo</td>
+</tr>
+<tr>
+<td><strong>Atributo</strong></td>
+<td>Característica de uma entidade</td>
+<td>Elipse</td>
+</tr>
+<tr>
+<td><strong>Chave Primária</strong></td>
+<td>Atributo que identifica cada registro de forma única</td>
+<td>Atributo sublinhado</td>
+</tr>
+<tr>
+<td><strong>Relacionamento</strong></td>
+<td>Ligação entre entidades</td>
+<td>Losango</td>
+</tr>
+<tr>
+<td><strong>Cardinalidade</strong></td>
+<td>Quantos de cada lado participam do relacionamento</td>
+<td>1:1, 1:N, N:M</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quer-saber-mais">📚 Quer saber mais?</h2>
+<ul>
+<li><a href="https://www.alura.com.br/artigos/mer-e-der-funcoes">MER e DER: definições e exemplos — Alura</a></li>
+<li><a href="https://www.devmedia.com.br/mer-e-der-modelagem-de-bancos-de-dados/14332">MER e DER: modelagem de bancos de dados — DevMedia</a></li>
+</ul>
+<hr />
+<p><em>Na próxima aula vamos ver as ferramentas que os profissionais usam para montar esses diagramas no computador!</em> 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../aula2-requisitos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 2 - Levantamento de requisitos e análise de dados">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 2 - Levantamento de requisitos e análise de dados
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../aula4-ferramentas-modelagem/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 4 - Ferramentras de modelagem de banco de dados">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 4 - Ferramentras de modelagem de banco de dados
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

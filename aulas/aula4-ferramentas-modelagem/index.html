@@ -1,0 +1,1254 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Site de aulas e materiais didáticos da matéria "Modelagem e Desenvolvimento de Banco de Dados"">
+      
+      
+        <meta name="author" content="Luccas Alencar">
+      
+      
+      
+        <link rel="prev" href="../aula3-modelo-er/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Aula 4 - Ferramentras de modelagem de banco de dados - Modelagem e Desenvolvimento de Banco de Dados</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aula-4-ferramentas-de-modelagem-de-banco-de-dados" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-header__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelagem e Desenvolvimento de Banco de Dados
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 4 - Ferramentras de modelagem de banco de dados
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../aula1-introducao/" class="md-tabs__link">
+          
+  
+  
+  Aulas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-nav__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Modelagem e Desenvolvimento de Banco de Dados
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula1-introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 1 - Introdução à modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula2-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 2 - Levantamento de requisitos e análise de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula3-modelo-er/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 3 - Modelo Entidade-Relacionamento (ER)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 4 - Ferramentras de modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 4 - Ferramentras de modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 O que você vai aprender hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-de-modelagem-para-que-servem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Ferramentas de modelagem — para que servem?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-workbench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐬 MySQL Workbench
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐬 MySQL Workbench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-server-vs-mysql-workbench-qual-e-a-diferenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL Server vs MySQL Workbench — qual é a diferença?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 ER/Studio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 ER/Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparativo-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativo rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-modelar-levantamento-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Antes de modelar: Levantamento de Requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-1-faca-no-caderno-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade 1 — Faça no caderno (individual)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-2-faca-no-caderno-reflexao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade 2 — Faça no caderno (reflexão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-requisito-ao-diagrama-o-fluxo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Do requisito ao diagrama — o fluxo completo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-3-desafio-no-caderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Atividade 3 — Desafio no caderno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumindo-a-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Resumindo a aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quiz-rapido-teste-seus-conhecimentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 Quiz rápido — Teste seus conhecimentos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quer-saber-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Quer saber mais?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 O que você vai aprender hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-de-modelagem-para-que-servem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Ferramentas de modelagem — para que servem?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-workbench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐬 MySQL Workbench
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐬 MySQL Workbench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-server-vs-mysql-workbench-qual-e-a-diferenca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL Server vs MySQL Workbench — qual é a diferença?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 ER/Studio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 ER/Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparativo-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativo rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-modelar-levantamento-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Antes de modelar: Levantamento de Requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-1-faca-no-caderno-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade 1 — Faça no caderno (individual)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-2-faca-no-caderno-reflexao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✏️ Atividade 2 — Faça no caderno (reflexão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-requisito-ao-diagrama-o-fluxo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Do requisito ao diagrama — o fluxo completo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atividade-3-desafio-no-caderno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Atividade 3 — Desafio no caderno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumindo-a-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Resumindo a aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quiz-rapido-teste-seus-conhecimentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 Quiz rápido — Teste seus conhecimentos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quer-saber-mais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Quer saber mais?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="aula-4-ferramentas-de-modelagem-de-banco-de-dados">Aula 4 — Ferramentas de Modelagem de Banco de Dados</h1>
+<blockquote>
+<p><strong>Componente:</strong> Modelagem e Desenvolvimento de Banco de Dados<br />
+<strong>Unidade:</strong> Levantamento de Dados e Conceitos Fundamentais<br />
+<strong>Duração:</strong> ~50 minutos</p>
+</blockquote>
+<hr />
+<h2 id="o-que-voce-vai-aprender-hoje">🎯 O que você vai aprender hoje</h2>
+<p>Na aula anterior você aprendeu a montar um Diagrama ER no papel. Hoje vamos descobrir:</p>
+<ul>
+<li>Quais <strong>ferramentas digitais</strong> os profissionais usam para criar esses diagramas</li>
+<li>O que são o <strong>MySQL Server</strong> e o <strong>MySQL Workbench</strong> e como eles se relacionam</li>
+<li>Como pensar na <strong>coleta de requisitos</strong> antes de sair modelando qualquer coisa</li>
+<li>Uma atividade de reflexão sobre como trabalhar em equipe num projeto real</li>
+</ul>
+<hr />
+<h2 id="ferramentas-de-modelagem-para-que-servem">🛠️ Ferramentas de modelagem — para que servem?</h2>
+<p>Fazer o diagrama no papel é ótimo para aprender e para rascunhar ideias. Mas no dia a dia profissional, usamos <strong>ferramentas digitais</strong> que:</p>
+<ul>
+<li>Deixam o diagrama mais organizado e fácil de editar</li>
+<li>Permitem <strong>exportar o modelo diretamente para o banco de dados</strong> (geram o código SQL automaticamente!)</li>
+<li>Facilitam o trabalho em equipe — todo mundo acessa e edita o mesmo arquivo</li>
+</ul>
+<p>Vamos conhecer as duas principais.</p>
+<hr />
+<h2 id="mysql-workbench">🐬 MySQL Workbench</h2>
+<p>O <strong>MySQL Workbench</strong> é uma ferramenta <strong>gratuita e visual</strong> para trabalhar com bancos de dados MySQL. Com ela você consegue:</p>
+<ul>
+<li>Criar e editar <strong>Diagramas ER</strong> arrastando elementos na tela</li>
+<li>Gerenciar o banco de dados (criar tabelas, inserir dados, rodar consultas)</li>
+<li><strong>Exportar</strong> o diagrama e gerar automaticamente o script SQL para criar as tabelas</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Analogia:</strong> pense no Workbench como o Word do banco de dados — uma interface amigável para você trabalhar visualmente sem precisar digitar tudo na linha de comando.</p>
+</blockquote>
+<h3 id="mysql-server-vs-mysql-workbench-qual-e-a-diferenca">MySQL Server vs MySQL Workbench — qual é a diferença?</h3>
+<p>Essa confusão é muito comum! Veja a diferença:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MySQL <strong>Server</strong></th>
+<th>MySQL <strong>Workbench</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>O que é</strong></td>
+<td>O motor do banco de dados — é ele que armazena e gerencia os dados de verdade</td>
+<td>A interface gráfica para você interagir com o Server</td>
+</tr>
+<tr>
+<td><strong>Analogia</strong></td>
+<td>O motor de um carro</td>
+<td>O painel e o volante do carro</td>
+</tr>
+<tr>
+<td><strong>Sem o outro</strong></td>
+<td>Funciona, mas você só acessa pela linha de comando</td>
+<td>Não funciona sozinho — precisa se conectar ao Server</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Resumindo:</strong> o <strong>Server</strong> é o banco de dados em si. O <strong>Workbench</strong> é a ferramenta que você usa para <em>conversar</em> com ele de forma visual.</p>
+</blockquote>
+<hr />
+<h2 id="erstudio">🏢 ER/Studio</h2>
+<p>O <strong>ER/Studio</strong> é uma ferramenta <strong>comercial</strong> (paga) usada em empresas maiores. Tem recursos mais avançados, como:</p>
+<ul>
+<li>Suporte a vários tipos de banco de dados (não só MySQL)</li>
+<li>Repositório compartilhado para equipes grandes</li>
+<li>Recursos avançados de documentação do banco de dados</li>
+</ul>
+<h3 id="comparativo-rapido">Comparativo rápido</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>MySQL Workbench</th>
+<th>ER/Studio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custo</td>
+<td>Gratuito</td>
+<td>Pago</td>
+</tr>
+<tr>
+<td>Banco de dados</td>
+<td>MySQL</td>
+<td>Vários</td>
+</tr>
+<tr>
+<td>Facilidade de uso</td>
+<td>Alta</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Recursos avançados</td>
+<td>Moderados</td>
+<td>Avançados</td>
+</tr>
+<tr>
+<td>Indicado para</td>
+<td>Aprendizado e projetos</td>
+<td>Grandes empresas</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 Para o nosso curso, trabalharemos com o <strong>MySQL Workbench</strong>, por ser gratuito e amplamente usado no mercado.</p>
+</blockquote>
+<hr />
+<h2 id="antes-de-modelar-levantamento-de-requisitos">📋 Antes de modelar: Levantamento de Requisitos</h2>
+<p>Sabe o que todo bom desenvolvedor faz <strong>antes</strong> de abrir qualquer ferramenta e criar qualquer tabela? Ele conversa com o cliente.</p>
+<p>Esse processo se chama <strong>levantamento de requisitos</strong> e é a etapa mais importante de qualquer projeto de software.</p>
+<p><strong>O que são requisitos?</strong><br />
+São todas as informações, regras e funcionalidades que o sistema precisa ter para atender às necessidades do cliente.</p>
+<p><strong>Por que isso importa para o banco de dados?</strong><br />
+Porque só depois de entender o que o sistema precisa fazer, você consegue saber:
+- Quais <strong>entidades</strong> existem
+- Quais <strong>atributos</strong> cada entidade precisa ter
+- Quais <strong>relacionamentos</strong> existem entre elas</p>
+<p>Se você pular essa etapa e sair modelando "no chute", vai precisar refazer tudo quando descobrir que esqueceu algo importante.</p>
+<hr />
+<h2 id="atividade-1-faca-no-caderno-individual">✏️ Atividade 1 — Faça no caderno (individual)</h2>
+<p><strong>Contexto:</strong> Você foi contratado por um pet shop para desenvolver um sistema de gestão. Antes de criar qualquer tabela, você precisa levantar os requisitos conversando com o dono.</p>
+<p><strong>Tarefa:</strong> Escreva no mínimo <strong>8 perguntas</strong> que você faria ao dono do pet shop para entender o que o sistema precisa ter.</p>
+<p><strong>Dica — pense em:</strong>
+- Quais informações sobre os <strong>animais</strong> precisam ser registradas?
+- Como funciona o <strong>agendamento</strong> de banho, tosa ou consulta?
+- Como são controlados os <strong>produtos</strong> da loja?
+- Como os <strong>clientes</strong> são cadastrados?
+- O sistema precisa gerar algum tipo de <strong>relatório</strong>?</p>
+<hr />
+<p><strong>Exemplo de perguntas para te inspirar:</strong></p>
+<blockquote>
+<ul>
+<li>"Quais dados do animal precisam ser registrados (nome, espécie, raça, peso...)?"</li>
+<li>"Um cliente pode ter mais de um animal cadastrado?"</li>
+<li>"Como funciona o pagamento — à vista, cartão, parcelado?"</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="atividade-2-faca-no-caderno-reflexao">✏️ Atividade 2 — Faça no caderno (reflexão)</h2>
+<p>Imagine que você faz parte de uma equipe de 4 pessoas. Vocês têm <strong>2 dias</strong> para levantar os requisitos de um sistema para o pet shop e apresentar um esboço do diagrama ER para o cliente.</p>
+<p>Responda no caderno:</p>
+<ol>
+<li>
+<p><strong>Empatia:</strong> Como você colocaria em prática a empatia ao conversar com o dono do pet shop? O que você faria para realmente entender o dia a dia dele, e não só "fazer o trabalho"?</p>
+</li>
+<li>
+<p><strong>Comunicação em equipe:</strong> Como você garantiria que todos os 4 membros da equipe entenderam o mesmo coisa após as entrevistas com o cliente? Que estratégias você usaria?</p>
+</li>
+<li>
+<p><strong>Pressão e prazo:</strong> Com apenas 2 dias, como você organizaria o trabalho para não se sentir perdido? Como dividiria as tarefas?</p>
+</li>
+</ol>
+<hr />
+<h2 id="do-requisito-ao-diagrama-o-fluxo-completo">🗺️ Do requisito ao diagrama — o fluxo completo</h2>
+<p>Agora você já conhece todas as etapas. Veja como elas se conectam:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. Conversar com o cliente
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>2. Levantar os requisitos
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   (o que o sistema precisa fazer/guardar)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        ↓
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>3. Identificar as entidades e atributos
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        ↓
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>4. Montar o Diagrama ER (no papel ou na ferramenta)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        ↓
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>5. Exportar para o banco de dados
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   (criar as tabelas de verdade)
+</code></pre></div>
+<hr />
+<h2 id="atividade-3-desafio-no-caderno">🧩 Atividade 3 — Desafio no caderno</h2>
+<p>Com base nas perguntas que você criou na Atividade 1 para o pet shop, agora monte um <strong>Diagrama ER inicial</strong> no caderno.</p>
+<p>Requisitos mínimos do diagrama:
+- Pelo menos <strong>3 entidades</strong> (ex: Animal, Tutor, Agendamento)
+- Pelo menos <strong>3 atributos</strong> por entidade, com a chave primária <strong>sublinhada</strong>
+- Pelo menos <strong>2 relacionamentos</strong> com a <strong>cardinalidade</strong> indicada (1:1, 1:N ou N:M)</p>
+<blockquote>
+<p>💬 <strong>Não existe resposta única!</strong> Dependendo das perguntas que você criou, seu diagrama pode ser diferente do do colega — e ambos podem estar corretos.</p>
+</blockquote>
+<hr />
+<h2 id="resumindo-a-aula">📝 Resumindo a aula</h2>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th>O que você precisa lembrar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MySQL Server</strong></td>
+<td>O banco de dados em si — armazena e gerencia os dados</td>
+</tr>
+<tr>
+<td><strong>MySQL Workbench</strong></td>
+<td>Ferramenta visual gratuita para criar diagramas ER e gerenciar o MySQL</td>
+</tr>
+<tr>
+<td><strong>ER/Studio</strong></td>
+<td>Ferramenta profissional (paga) com recursos avançados</td>
+</tr>
+<tr>
+<td><strong>Levantamento de requisitos</strong></td>
+<td>Conversa com o cliente para entender o que o sistema precisa antes de modelar</td>
+</tr>
+<tr>
+<td><strong>Fluxo de trabalho</strong></td>
+<td>Requisitos → Entidades → Diagrama ER → Banco de dados</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quiz-rapido-teste-seus-conhecimentos">🔢 Quiz rápido — Teste seus conhecimentos</h2>
+<p>Responda no caderno (V para Verdadeiro, F para Falso):</p>
+<ol>
+<li>( ) O MySQL Workbench funciona sem precisar do MySQL Server instalado.</li>
+<li>( ) O MySQL Workbench é uma ferramenta gratuita.</li>
+<li>( ) O levantamento de requisitos é feito <strong>depois</strong> de criar as tabelas no banco.</li>
+<li>( ) A chave primária de uma entidade pode se repetir entre dois registros.</li>
+<li>( ) O ER/Studio suporta vários tipos de banco de dados, não só MySQL.</li>
+</ol>
+<p><strong>Gabarito:</strong> 1-F, 2-V, 3-F, 4-F, 5-V</p>
+<hr />
+<h2 id="quer-saber-mais">📚 Quer saber mais?</h2>
+<ul>
+<li><a href="https://youtu.be/zpssr3u1EO8?t=41">Como instalar MySQL Server e Workbench — Hostinger (YouTube)</a></li>
+<li><a href="https://youtu.be/WChjp21gReI?t=14">Criando um banco de dados no MySQL Workbench — Edukati (YouTube)</a></li>
+<li><a href="https://www.devmedia.com.br/ferramentas-case-e-qualidade-dos-dados-o-paradigma-da-boa-modelagem/6905">Ferramentas CASE e qualidade dos dados — DevMedia</a></li>
+</ul>
+<hr />
+<p><em>Nas próximas aulas, vamos colocar a mão na massa e criar nosso primeiro banco de dados de verdade usando o MySQL Workbench!</em> 💻🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../aula3-modelo-er/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 3 - Modelo Entidade-Relacionamento (ER)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 3 - Modelo Entidade-Relacionamento (ER)
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
