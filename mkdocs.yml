@@ -63,11 +63,10 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Aulas:
-    - Aula 1 - Introdução à modelagem de banco de dados : aulas/Aula 1 - Introdução à modelagem de banco de dados.md
-    - Aula 2 - Levantamento de requisitos e análise de dados : aulas/Aula 2 - Levantamento de requisitos e análise de dados.md
-    - Aula 3 - Modelo Entidade-Relacionamento (ER) : aulas/Aula 3 - Modelo Entidade-Relacionamento (ER).md
-    - Aula 4 - Ferramentras de modelagem de banco de dados : aulas/Aula 4 - Ferramentas de modelagem de banco de dados.md
-    - Aula 5 - Relacionamentos um-para-um : aulas/Aula 5 - Relacionamentos um-para-um.md
+    - Aula 1 - Introdução à modelagem de banco de dados : aulas/aula1-introducao.md
+    - Aula 2 - Levantamento de requisitos e análise de dados : aulas/aula2-requisitos.md
+    - Aula 3 - Modelo Entidade-Relacionamento (ER) : aulas/aula3-modelo-er.md
+    - Aula 4 - Ferramentras de modelagem de banco de dados : aulas/aula4-ferramentas-modelagem.md
 
 
 
