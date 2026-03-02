@@ -63,10 +63,20 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Aulas:
-    - Aula 1 - Introdução à modelagem de banco de dados : aulas/aula1-introducao.md
-    - Aula 2 - Levantamento de requisitos e análise de dados : aulas/aula2-requisitos.md
-    - Aula 3 - Modelo Entidade-Relacionamento (ER) : aulas/aula3-modelo-er.md
-    - Aula 4 - Ferramentras de modelagem de banco de dados : aulas/aula4-ferramentas-modelagem.md
+    - Aula 1 - Introdução à modelagem de banco de dados : aulas/aula1.md
+    - Aula 2 - Levantamento de requisitos e análise de dados : aulas/aula2.md
+    - Aula 3 - Modelo Entidade-Relacionamento (ER) : aulas/aula3.md
+    - Aula 4 - Ferramentras de modelagem de banco de dados : aulas/aula4.md
+    - Aula 5 - Relacionamentos um-para-um: aulas/aula5.md
+    - Aula 6 - Relacionamentos um-para-muitos: aulas/aula6.md
+    - Aula 7 - Relacionamentos muitos-para-muitos: aulas/aula7
+    - Aula 8 - Resolução de relacionamentos complexos: aulas/aula8.md
+    - Aula 9 - Normalização de banco de dados: aulas/aula9.md
+    - Aula 10 - Primeira Forma Normal (1NF): aulas/aula10.md
+    - Aula 11 - Segunda Forma Normal (2NF): aulas/aula11.md
+    - Aula 12 - Casos práticos de normalização: aulas/aula12.md
+    - Aula 13 - Terceira Forma Normal (3NF): aulas/aula13.md
+    - Aula 14 - Forma Normal de Boyce-Codd (BCNF): aulas/aula14.md
 
 
 
