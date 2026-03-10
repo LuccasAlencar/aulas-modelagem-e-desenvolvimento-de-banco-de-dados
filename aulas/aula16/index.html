@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Site de aulas e materiais didáticos da matéria "Modelagem e Desenvolvimento de Banco de Dados"">
+      
+      
+        <meta name="author" content="Luccas Alencar">
+      
+      
+      
+        <link rel="prev" href="../aula15/">
+      
+      
+        <link rel="next" href="../aula17/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Aula 16 — Resumo e revisão das formas normais - Modelagem e Desenvolvimento de Banco de Dados</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#antes-de-comecar" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-header__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelagem e Desenvolvimento de Banco de Dados
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aula 16 — Resumo e revisão das formas normais
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../aula1/" class="md-tabs__link">
+          
+  
+  
+  Aulas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelagem e Desenvolvimento de Banco de Dados" class="md-nav__button md-logo" aria-label="Modelagem e Desenvolvimento de Banco de Dados" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Modelagem e Desenvolvimento de Banco de Dados
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LuccasAlencar/aulas-modelagem-e-desenvolvimento-de-banco-de-dados
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 1 - Introdução à modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 2 - Levantamento de requisitos e análise de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 3 - Modelo Entidade-Relacionamento (ER)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 4 - Ferramentras de modelagem de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 5 - Relacionamentos um-para-um
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 6 - Relacionamentos um-para-muitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula7" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 7 - Relacionamentos muitos-para-muitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 8 - Resolução de relacionamentos complexos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 9 - Normalização de banco de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 10 - Primeira Forma Normal (1NF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 11 - Segunda Forma Normal (2NF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 12 - Casos práticos de normalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 13 - Terceira Forma Normal (3NF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 14 - Forma Normal de Boyce-Codd (BCNF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 15 - Casos práticos de normalização- 3NF e BCNF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 - Resumo e revisão das formas normais
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 16 - Resumo e revisão das formas normais
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-nesta-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que você vai aprender nesta aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primeira-forma-normal-1nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primeira Forma Normal (1NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primeira Forma Normal (1NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eliminando-redundancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eliminando redundâncias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-tabela-de-alunos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo: Tabela de Alunos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusão
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segunda-forma-normal-2nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segunda Forma Normal (2NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Segunda Forma Normal (2NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removendo-dependencias-parciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removendo Dependências Parciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dividindo-em-tabelas-mais-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dividindo em Tabelas Mais Específicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terceira-forma-normal-3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terceira Forma Normal (3NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terceira Forma Normal (3NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eliminando-dependencias-transitivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eliminando dependências transitivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratica-removendo-a-coluna-valor-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: Removendo a coluna 'Valor Total'
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximo-passo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo passo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forma-normal-de-boyce-codd-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forma Normal de Boyce-Codd (BCNF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forma Normal de Boyce-Codd (BCNF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificando-dependencias-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificando Dependências Funcionais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-pratico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo Prático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atividade-verificacao-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atividade: Verificação BCNF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ponto Final
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ponto-final_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ponto Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escreva-o-que-aprendeu-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escreva o que aprendeu hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perguntas-para-reflexao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perguntas para reflexão
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 17 - Introdução ao SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 18 - Comandos de criação (CREATE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aula19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aula 19 - Comandos de leitura (SELECT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-voce-vai-aprender-nesta-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que você vai aprender nesta aula
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primeira-forma-normal-1nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primeira Forma Normal (1NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primeira Forma Normal (1NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eliminando-redundancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eliminando redundâncias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-tabela-de-alunos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo: Tabela de Alunos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusão
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segunda-forma-normal-2nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segunda Forma Normal (2NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Segunda Forma Normal (2NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removendo-dependencias-parciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removendo Dependências Parciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dividindo-em-tabelas-mais-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dividindo em Tabelas Mais Específicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terceira-forma-normal-3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terceira Forma Normal (3NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terceira Forma Normal (3NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eliminando-dependencias-transitivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eliminando dependências transitivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratica-removendo-a-coluna-valor-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prática: Removendo a coluna 'Valor Total'
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proximo-passo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo passo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forma-normal-de-boyce-codd-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forma Normal de Boyce-Codd (BCNF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Forma Normal de Boyce-Codd (BCNF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificando-dependencias-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificando Dependências Funcionais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-pratico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo Prático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atividade-verificacao-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atividade: Verificação BCNF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ponto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ponto Final
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ponto-final_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ponto Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escreva-o-que-aprendeu-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escreva o que aprendeu hoje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perguntas-para-reflexao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perguntas para reflexão
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Aula 16 - Resumo e revisão das formas normais</h1>
+
+<h2 id="antes-de-comecar">Antes de começar</h2>
+<p>Você já parou para pensar em quantas vezes você precisa digitar seu nome completo naquele aplicativo novo que acabou de instalar? Pois é, o mesmo princípio usado por esses apps também se aplica à base de dados. Hoje, vamos revisar as formas normais e entender como elas ajudam a organizar nossos bancos de dados.</p>
+<h2 id="o-que-voce-vai-aprender-nesta-aula">O que você vai aprender nesta aula</h2>
+<ul>
+<li>Entender e aplicar a Primeira Forma Normal (1NF) para garantir unicidade de dados.</li>
+<li>Aprender sobre a Segunda Forma Normal (2NF) e como remover dependências parciais.</li>
+<li>Compreender a Terceira Forma Normal (3NF) e eliminar redundâncias transitivas.</li>
+<li>Verificar tabelas usando a forma normal de Boyce-Codd (BCNF).</li>
+</ul>
+<h2 id="primeira-forma-normal-1nf">Primeira Forma Normal (1NF)</h2>
+<p>Olá, pessoal! Você já parou pra pensar em quantas vezes você precisa digitar seu nome completo naquele aplicativo novo que acabou de instalar? Pois é, o mesmo princípio usado por esses apps também se aplica à base de dados.</p>
+<h3 id="eliminando-redundancias">Eliminando redundâncias</h3>
+<p>Vamos falar sobre como garantir que cada entrada seja única em uma tabela. Isso significa que se temos um campo para nomes, não podemos ter duplicatas como "João Silva" repetido várias vezes. Cada aluno só aparece uma vez na tabela.</p>
+<blockquote>
+<p>🤔 <strong>Para refletir:</strong> Se você fosse responsável por manter essa lista de alunos, quais problemas poderiam surgir com nomes duplicados?</p>
+</blockquote>
+<h3 id="exemplo-tabela-de-alunos">Exemplo: Tabela de Alunos</h3>
+<p>Vamos criar juntos uma tabela simples de alunos para ilustrar isso:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>| ID | NOME        |
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|----|------------|
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>| 1  | João Silva |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>| 2  | Maria Souza|
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| 3  | Ana Costa  |
+</code></pre></div>
+<p>Agora, imagine se tivéssemos duplicado o nome de "João Silva". A tabela ficaria confusa e difícil de gerir.</p>
+<p><strong>Atividade:</strong> Tente adicionar mais dois alunos nessa tabela sem repetir nomes.</p>
+<h3 id="conclusao">Conclusão</h3>
+<p>Lembrando que cada entrada deve ser única ajuda a manter nossas tabelas limpas e fáceis de entender, não é mesmo?</p>
+<p>E vocês, já notaram algum lugar na vida cotidiana onde a ideia da unicidade de dados seria útil?</p>
+<hr />
+<h2 id="segunda-forma-normal-2nf">Segunda Forma Normal (2NF)</h2>
+<p>Olá pessoal! Já pararam para pensar em quantos apps vocês usam todos os dias? Cada um deles armazena informações diferentes sobre você — desde fotos até amigos. Agora, imagine que cada aplicativo fosse uma grande tabela onde tudo é misturado juntos. A Segunda Forma Normal (2NF) nos ajuda a organizar essas tabelas de forma mais lógica e eficiente.</p>
+<h3 id="removendo-dependencias-parciais">Removendo Dependências Parciais</h3>
+<p>A ideia por trás da 2NF é garantir que as informações não estejam espalhadas desnecessariamente. Imagine você tem uma tabela para aluguéis de carros onde estão todos os dados: clientes, endereços, modelos e marcas dos carros, datas de locação, etc.</p>
+<blockquote>
+<p>🤔 <strong>Para refletir:</strong> Como a informação sobre diferentes partes da operação (cliente, carro) pode ser prejudicada se tudo estiver juntos em uma única tabela?</p>
+</blockquote>
+<p>Vamos criar um exemplo prático. Se tivéssemos uma tabela com todas essas informações sobre aluguéis de carros, e quiséssemos apenas alterar o endereço do cliente, precisaríamos atualizar várias linhas da tabela. Isso seria complicado e mais propenso a erros.</p>
+<h3 id="dividindo-em-tabelas-mais-especificas">Dividindo em Tabelas Mais Específicas</h3>
+<p>A solução é separar esses dados em tabelas menores que fazem sentido individualmente. Então teríamos uma tabela para os <strong>clientes</strong> com seus respectivos endereços, outra para as informações sobre os <strong>carros</strong>, e uma <strong>tabela de aluguéis</strong> que conecta essas duas.</p>
+<blockquote>
+<p>🤔 <strong>Para refletir:</strong> Como a separação dos dados em tabelas mais específicas facilitaria o gerenciamento das informações?</p>
+</blockquote>
+<p>Agora é a vez de vocês! Pensem numa tabela que contém várias informações misturadas e sugira como poderíamos dividi-la para atender à 2NF. Escreva isso no papel ou num documento.</p>
+<hr />
+<h2 id="terceira-forma-normal-3nf">Terceira Forma Normal (3NF)</h2>
+<p>Olá, pessoal! Já pararam pra pensar em quantas informações vocês armazenam todos os dias nos aplicativos de celular? Desde compras no app do cartão até notas nas suas redes sociais educacionais. Agora, imagine se cada nota fosse repetida várias vezes, como ficaria a sua experiência?</p>
+<p>Vamos falar sobre um jeito de organizar dados para que eles não se tornem redundantes e confusos. A <strong>Terceira Forma Normal (3NF)</strong> é uma regra do desenho de banco de dados que nos ajuda nisso, garantindo que os nossos registros estejam sempre limpos e eficientes.</p>
+<h3 id="eliminando-dependencias-transitivas">Eliminando dependências transitivas</h3>
+<p>A ideia principal aqui é remover informações que já podem ser inferidas a partir de outras. Por exemplo, na tabela de aluguéis, uma coluna chamada 'Valor Total' poderia ser removida porque o valor total pode ser calculado somando o preço por mês e multiplicando pela duração do contrato.</p>
+<blockquote>
+<p>🤔 <strong>Para refletir:</strong> Se você tivesse que criar um banco de dados para registrar todas as suas compras, quais colunas seriam redundantes?</p>
+</blockquote>
+<h3 id="pratica-removendo-a-coluna-valor-total">Prática: Removendo a coluna 'Valor Total'</h3>
+<p>Vamos colocar isso em prática. Imagina uma tabela de aluguéis onde cada linha representa um contrato e inclui o preço por mês e a duração do contrato. Agora, remova a coluna 'Valor Total' da sua tabela fictícia e pense como você poderia calcular este valor quando necessário.</p>
+<h3 id="proximo-passo">Próximo passo</h3>
+<p>Agora que entendemos a importância de remover redundâncias, como podemos aplicar esses conceitos para melhorar outros tipos de bancos de dados?</p>
+<p>Qual banco de dados do seu cotidiano você gostaria de organizar melhor usando o 3NF?</p>
+<hr />
+<h2 id="forma-normal-de-boyce-codd-bcnf">Forma Normal de Boyce-Codd (BCNF)</h2>
+<p>Quando você está jogando um jogo e quer coletar itens específicos, precisa saber exatamente o que fazer sem confusão, certo? Na programação de banco de dados, temos algo parecido com a forma normal de Boyce-Codd (BCNF), que ajuda a garantir que nossas tabelas estejam bem organizadas e livres de problemas.</p>
+<h3 id="verificando-dependencias-funcionais">Verificando Dependências Funcionais</h3>
+<p>Vamos pensar nos grupos de amigos em redes sociais. Se uma pessoa aceitar um convite, todos os seus amigos também devem ser notificados automaticamente? Isso poderia criar confusão se não estiver bem definido quem manda as notificações.</p>
+<p>Na BCNF, nós verificamos que cada dependência funcional tem como determinante (ou causa) uma superchave. Uma superchave é aquela que pode identificar exclusivamente todas as linhas de nossa tabela sem precisar de ajuda de outras colunas.</p>
+<blockquote>
+<p>🤔 <strong>Para refletir:</strong> Como você garantiria que um convite em uma rede social seja processado corretamente para todos os membros do grupo?</p>
+</blockquote>
+<h3 id="exemplo-pratico">Exemplo Prático</h3>
+<p>Vamos imaginar que temos uma tabela chamada "Postagens" onde cada postagem pertence a um usuário. Se tentarmos adicionar detalhes sobre o perfil de quem fez o post na mesma linha, isso poderia causar duplicação desnecessária ou inconsistências.</p>
+<h3 id="atividade-verificacao-bcnf">Atividade: Verificação BCNF</h3>
+<p>Vamos analisar uma tabela simplificada chamada "Amizades". Ela tem três colunas: <code>ID_Usuario1</code>, <code>ID_Usuario2</code> e <code>TipoRelacao</code>. O tipo de relação pode ser "amigo", "conhecido" ou "inimigo".</p>
+<p>Pergunta: Se <code>ID_Usuario1</code> e <code>ID_Usuario2</code> juntos formarem uma superchave, como podemos garantir que a tabela está em BCNF? Verifique se cada dependência funcional (por exemplo, <code>(ID_Usuario1, ID_Usuario2) -&gt; TipoRelacao</code>) tem um determinante que é uma superchave.</p>
+<h3 id="ponto-final">Ponto Final</h3>
+<p>Depois de verificar e ajustar nossa tabela para BCNF, nós reduzimos a chance de anomalias em operações de inserção, atualização ou exclusão. Isso faz com que nossos bancos de dados funcionem suavemente, assim como um jogo bem projetado.</p>
+<p>E agora, pense: Como seria garantir essa consistência se tivéssemos múltiplas tabelas interligadas?</p>
+<h2 id="ponto-final_1">Ponto Final</h2>
+<p>Hoje, revisamos as formas normais e vimos como elas ajudam a organizar nossos bancos de dados. Agora você pode aplicar esses princípios para criar sistemas mais eficientes e consistentes.</p>
+<hr />
+<h2 id="escreva-o-que-aprendeu-hoje">Escreva o que aprendeu hoje</h2>
+<ul>
+<li><strong>Primeira Forma Normal (1NF):</strong> Garante unicidade de dados.</li>
+<li><strong>Segunda Forma Normal (2NF):</strong> Remove dependências parciais.</li>
+<li><strong>Terceira Forma Normal (3NF):</strong> Elimina redundâncias transitivas.</li>
+<li><strong>Forma Normal de Boyce-Codd (BCNF):</strong> Verifica dependências funcionais com superchaves.</li>
+</ul>
+<hr />
+<h2 id="perguntas-para-reflexao">Perguntas para reflexão</h2>
+<ol>
+<li>Como você aplicaria a 2NF em um banco de dados que contém informações sobre funcionários e departamentos?</li>
+<li>Que tipo de redundância poderia ser removida usando a 3NF em um sistema de vendas online?</li>
+</ol>
+<hr />
+<p>Esperamos que esta revisão tenha ajudado você a entender melhor as formas normais e como elas são fundamentais para o design eficiente de bancos de dados. Continue praticando e aplicando esses conceitos!</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../aula15/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Aula 15 - Casos práticos de normalização- 3NF e BCNF">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Aula 15 - Casos práticos de normalização- 3NF e BCNF
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../aula17/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Aula 17 - Introdução ao SQL">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Aula 17 - Introdução ao SQL
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
